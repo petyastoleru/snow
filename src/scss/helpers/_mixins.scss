@@ -1,0 +1,44 @@
+// absolute
+@mixin aboluteCenterLeft {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+@mixin aboluteCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absoluteTopCenter {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+// flex
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexAlignCenter($justify) {
+  display: flex;
+  justify-content: $justify;
+  align-items: center;
+}
+
+@mixin flexRowJustLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+@mixin autoWidthHeight {
+  width: auto;
+  height: auto;
+}

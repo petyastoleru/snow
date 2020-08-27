@@ -1,0 +1,39 @@
+.section {
+  width: 100%;
+  text-align: center;
+
+  &--grey {
+    background-color: $color__sectionBg--grey;
+  }
+
+  &--pattern {
+    background: url("../assets/images/bg-pattern.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__wrapper {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-family: $font-playFair;
+    font-size: 38px;
+    font-weight: 700;
+    color: $color__title;
+    text-transform: capitalize;
+    padding: 95px 15px 0 15px;
+  }
+
+  &__subtitle {
+    display: inline-block;
+    max-width: 688px;
+    margin-top: 34px;
+    font-family: $font-workSans;
+    font-size: 15px;
+    color: $color__subtitle;
+    line-height: 1.4;
+    padding: 0 15px 0 15px;
+  }
+}
