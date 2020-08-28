@@ -1,0 +1,28 @@
+.btn {
+  width: 90vw;
+  height: 50px;
+  background-color: $color__btnBg;
+  color: $color__main--white;
+  text-transform: uppercase;
+  font-family: $font-workSans;
+  font-weight: 500;
+  font-size: 14px;
+
+  @include tablet {
+    width: 45vw;
+  }
+
+  @include laptop {
+    width: 180px;
+  }
+
+  @include desktop {
+    width: 180px;
+  }
+
+  &:hover {
+    background-color: $color__sectionBg--grey;
+    border: 1px solid $color__btnBg;
+    color: $color__btnBg;
+  }
+}

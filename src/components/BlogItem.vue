@@ -1,13 +1,13 @@
 <template>
   <div class="card">
     <div class="card__image">
-      <router-link :to="{ name: 'Blog-Item', params: { name: item.title, item: item }}">
+      <router-link :to="{ name: 'Blog-Item', params: { id: item.id }}">
         <img :src="item.imgUrl" :alt="item.title" draggable="false" />
       </router-link>
       <span class="card__type">{{item.type}}</span>
     </div>
     <div class="card__description">
-      <router-link :to="{ name: 'Blog-Item', params: { name: item.title, item: item }}">
+      <router-link :to="{ name: 'Blog-Item', params: { id: item.id }}">
         <h3 class="card__title">{{item.title}}</h3>
       </router-link>
       <p class="card__date">{{item.date}}</p>
@@ -19,11 +19,6 @@
 <script>
 export default {
   props: ["item"],
-  methods: {
-    onItemClick() {
-      this.$store.commit("setBlog", this.item);
-    },
-  },
 };
 </script>
 

@@ -47,9 +47,7 @@ export default {
   },
   props: ["item"],
   mounted() {
-    this.objItem = this.item
-      ? this.item
-      : JSON.parse(localStorage.getItem("vuex")).choosenItem;
+    this.objItem = this.item;
   },
 };
 </script>

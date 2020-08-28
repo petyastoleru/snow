@@ -1,8 +1,5 @@
 <template>
-  <router-link
-    :to="{ name: 'Portfolio-Item', params: { name: projectDesc.name, item: projectDesc }}"
-    @click.native="onItemClick"
-  >
+  <router-link :to="{ name: 'Portfolio-Item', params: { id: projectDesc.id }}">
     <div class="portfolioItem">
       <img v-bind:src="projectDesc.url" alt="image" />
       <div class="portfolioItem__bg">
@@ -16,11 +13,6 @@
 <script>
 export default {
   props: ["projectDesc"],
-  methods: {
-    onItemClick() {
-      this.$store.commit("setItem", this.projectDesc);
-    },
-  },
 };
 </script>
 

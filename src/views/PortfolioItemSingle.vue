@@ -1,10 +1,11 @@
 <template>
   <div class="page__wrapper">
-    <SingleWork v-bind:item="item" />
+    <template v-if="childDataLoaded">
+      <SingleWork v-bind:item="objItem" />
 
-    <Choose v-bind:currentProduct="objItem" />
-
-    <Footer />
+      <Choose v-bind:currentProduct="objItem" />
+      <Footer />
+    </template>
   </div>
 </template>
 
@@ -22,19 +23,23 @@ export default {
   data() {
     return {
       objItem: Object,
+      childDataLoaded: false,
     };
   },
   props: {
     route: String,
-    item: Object,
   },
   created() {
     this.$emit("getRoute", this.route);
   },
   mounted() {
-    this.objItem = this.item
-      ? this.item
-      : JSON.parse(localStorage.getItem("vuex")).choosenItem;
+    this.objItem = this.$store.getters.getElementByID(
+      +this.$route.path.slice(
+        this.$route.path.search("id") + 2,
+        this.$route.path.length
+      )
+    )[0];
+    this.childDataLoaded = this.objItem ? true : false;
   },
 };
 </script>

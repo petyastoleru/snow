@@ -1,25 +1,27 @@
 <template>
   <div class="section choose">
-    <router-link
-      :to="{ name: 'Portfolio-Item', params: { name: prevProject.name, item: prevProject }}"
-      @click.native="onPrevClick"
-    >
-      <font-awesome-icon
-        :icon="{ prefix: 'fas', iconName: 'angle-left' }"
-        class="choose__icon choose__icon--left"
-      />
-      <p class="choose__text">Previous Project</p>
-    </router-link>
-    <router-link
-      :to="{ name: 'Portfolio-Item', params: { name: nextProject.name, item: nextProject }}"
-      @click.native="onNextClick"
-    >
-      <p class="choose__text">Next Project</p>
-      <font-awesome-icon
-        :icon="{prefix: 'fas', iconName: 'angle-right' }"
-        class="choose__icon choose__icon--right"
-      />
-    </router-link>
+    <template v-if="childDataLoaded">
+      <router-link
+        :to="{ name: 'Portfolio-Item', params: { id: prevProject.id }}"
+        @click.native="onClick"
+      >
+        <font-awesome-icon
+          :icon="{ prefix: 'fas', iconName: 'angle-left' }"
+          class="choose__icon choose__icon--left"
+        />
+        <p class="choose__text">Previous Project</p>
+      </router-link>
+      <router-link
+        :to="{ name: 'Portfolio-Item', params: { id: nextProject.id }}"
+        @click.native="onClick"
+      >
+        <p class="choose__text">Next Project</p>
+        <font-awesome-icon
+          :icon="{prefix: 'fas', iconName: 'angle-right' }"
+          class="choose__icon choose__icon--right"
+        />
+      </router-link>
+    </template>
   </div>
 </template>
 
@@ -29,31 +31,25 @@ export default {
     return {
       nextProject: Object,
       prevProject: Object,
+      childDataLoaded: false,
     };
   },
   props: ["currentProduct"],
   methods: {
-    onPrevClick() {
-      this.$store.commit("setItem", this.prevProject);
-      window.location.reload();
-    },
-    onNextClick() {
-      this.$store.commit("setItem", this.nextProject);
-      window.location.reload();
+    onClick() {
+      location.reload();
     },
   },
   mounted() {
-    this.nextProject = this.$store.getters.getNextOrPrevProject(
-      this.currentProduct.id != undefined
-        ? this.currentProduct.id + 1
-        : JSON.parse(localStorage.getItem("vuex")).choosenItem.id + 1
+    let ID = +this.$route.path.slice(
+      this.$route.path.search("id") + 2,
+      this.$route.path.length
     );
 
-    this.prevProject = this.$store.getters.getNextOrPrevProject(
-      this.currentProduct.id != undefined
-        ? this.currentProduct.id - 1
-        : JSON.parse(localStorage.getItem("vuex")).choosenItem.id - 1
-    );
+    this.nextProject = this.$store.getters.getNextOrPrevProject(++ID);
+    this.prevProject = this.$store.getters.getNextOrPrevProject(--ID);
+
+    this.childDataLoaded = true;
   },
 };
 </script>

@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
+
 const routes = [
   {
     path: '/',
@@ -19,7 +20,7 @@ const routes = [
   },
 
   {
-    path: '/portfolioItem/:name',
+    path: '/portfolioItem/id:id',
     name: 'Portfolio-Item',
     meta: {
       reload: true
@@ -36,7 +37,7 @@ const routes = [
   },
 
   {
-    path: '/blog/:name',
+    path: '/blog/id:id',
     name: 'Blog-Item',
     meta: {
       reload: true
