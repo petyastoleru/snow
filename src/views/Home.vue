@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper">
-    <Header id="header" />
+    <Header />
     <About />
     <BestProjects />
     <Slider />
     <Partners />
-    <Blog id="contact" />
-    <AddComment v-bind:isHomeForm="true" />
+    <Blog />
+    <Contact />
     <Footer />
   </div>
 </template>
@@ -18,7 +18,7 @@ import BestProjects from "../components/BestProjects";
 import Slider from "../components/Slider";
 import Partners from "../components/PartnersSlider";
 import Blog from "../components/BlogSection";
-import AddComment from "../components/AddComment";
+import Contact from "../components/ContactSection";
 import Footer from "../components/Footer";
 
 export default {
@@ -30,7 +30,7 @@ export default {
     Slider,
     Partners,
     Blog,
-    AddComment,
+    Contact,
     Footer,
   },
   props: {

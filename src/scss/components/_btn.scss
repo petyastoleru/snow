@@ -7,6 +7,7 @@
   font-family: $font-workSans;
   font-weight: 500;
   font-size: 14px;
+  cursor: pointer;
 
   @include tablet {
     width: 45vw;

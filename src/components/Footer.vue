@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer section section--grey">
+  <footer class="footer section">
     <SocLinks class="footer__socLinks" />
     <p class="footer__copyright">Copyright © 2016. Created by Unvab</p>
   </footer>
@@ -17,6 +17,7 @@ export default {
 <style lang="scss">
 .footer {
   height: 150px;
+  background-color: $color__footer--bg;
 
   &__socLinks {
     display: flex;

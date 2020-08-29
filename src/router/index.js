@@ -9,6 +9,19 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: {
+      title: 'New Branding Agency - Home Page',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The home page of our example app.'
+        },
+        {
+          property: 'og:description',
+          content: 'The home page of our example app.'
+        }
+      ]
+    },
     component: Home
   },
 
@@ -16,6 +29,7 @@ const routes = [
     path: '/portfolio',
     name: 'Portfolio',
     props: true,
+    meta: { title: 'Our Portfolio' },
     component: () => import(/* webpackChunkName: "about" */ '../views/Portfolio.vue')
   },
 
@@ -23,7 +37,8 @@ const routes = [
     path: '/portfolioItem/id:id',
     name: 'Portfolio-Item',
     meta: {
-      reload: true
+      reload: true,
+      title: 'Product of New Branding Agency',
     },
     props: true,
     component: () => import(/* webpackChunkName: "about" */ '../views/PortfolioItemSingle.vue')
@@ -33,6 +48,7 @@ const routes = [
     path: '/blog',
     name: 'Blog',
     props: true,
+    meta: { title: 'Blog' },
     component: () => import(/* webpackChunkName: "about" */ '../views/Blog.vue')
   },
 
@@ -40,7 +56,8 @@ const routes = [
     path: '/blog/id:id',
     name: 'Blog-Item',
     meta: {
-      reload: true
+      reload: true,
+      title: ' Blog - New Branding Agency'
     },
     props: true,
     component: () => import(/* webpackChunkName: "about" */ '../views/BlogNewsSingle.vue')
@@ -57,11 +74,24 @@ const router = new VueRouter({
   scrollBehavior: function (to) {
     if (to.hash) {
       return {
-        selector: to.hash
+        selector: to.hash,
+        offset: { x: 0, y: -100 }
       }
-
+    }
+    else {
+      return { x: 0, y: 0 }
     }
   },
 })
+
+const DEFAULT_TITLE = "New Branding Agency"
+
+router.afterEach((to, from) => {
+  // Use next tick to handle router history correctly
+  // see: https://github.com/vuejs/vue-router/issues/914#issuecomment-384477609
+  Vue.nextTick(() => {
+    document.title = to.meta.title || DEFAULT_TITLE;
+  });
+});
 
 export default router

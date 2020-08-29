@@ -46,7 +46,7 @@ export default {
 <style lang="scss">
 .slider {
   max-width: 1140px;
-  margin: 57px auto !important;
+  margin: 57px auto 50px auto !important;
   padding: 0 15px;
 
   @include tablet {

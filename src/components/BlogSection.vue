@@ -20,10 +20,6 @@ export default {
   height: auto;
   overflow: hidden;
 
-  @include tablet {
-    height: 860px;
-  }
-
   @include laptop {
     height: 860px;
   }

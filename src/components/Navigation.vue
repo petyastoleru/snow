@@ -3,8 +3,11 @@
     class="nav"
     v-bind:class="{ close: scrolled && !isOpen || homePage && !isOpen}"
     :exact="true"
+    :offset="110"
+    :duration="900"
+    bezier-easing-value=".5,0,.35,1"
   >
-    <router-link to="/#header" class="logo">
+    <router-link to="/" class="logo">
       <img src="@/assets/images/logo-light.svg" alt="logo" />
     </router-link>
 

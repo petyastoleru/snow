@@ -22,6 +22,7 @@
         pattern="^[a-z0-9._-]+@[a-z]+\.[a-z]{2,}$"
       />
       <input
+        v-if="isHomeForm"
         class="postMessage__titleForm"
         type="text"
         name="title"
@@ -45,17 +46,30 @@ export default {
       commentText: "",
     };
   },
+
   props: ["blogID", "isHomeForm"],
 
   methods: {
     onSubmit() {
-      console.log(this.name, this.email, this.commentText);
+      console.log(
+        this.name,
+        this.email,
+        this.isHomeForm ? this.title : "",
+        this.commentText
+      );
       this.$store.commit("addNewComment", {
         name: this.name,
         commentText: this.commentText,
         blogID: this.blogID,
       });
-      location.reload();
+      if (!this.isHomeForm) {
+        location.reload();
+      } else {
+        this.name = "";
+        this.email = "";
+        this.title = "";
+        this.commentText = "";
+      }
     },
   },
 };
