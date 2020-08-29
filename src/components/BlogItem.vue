@@ -11,14 +11,15 @@
         <h3 class="card__title">{{item.title}}</h3>
       </router-link>
       <p class="card__date">{{item.date}}</p>
-      <p class="card__shortDesc">{{item.shortDesc}}</p>
+      <p v-if="isSlider" class="card__shortDesc">{{item.shortDesc}}</p>
+      <p class="card__desc" v-else v-html="item.blogDesc"></p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["item"],
+  props: ["item", "isSlider"],
 };
 </script>
 
@@ -113,6 +114,11 @@ export default {
     margin-top: 22px;
     font-size: 15px;
     color: $color__subtitle;
+  }
+
+  &__desc {
+    cursor: text;
+    margin-top: 15px;
   }
 }
 </style>

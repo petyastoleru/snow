@@ -1,7 +1,7 @@
 <template>
   <VueSlickCarousel class="slider" v-bind="settings">
     <template v-for="news in newsList">
-      <BlogItem :key="news.id" v-bind:item="news" />
+      <BlogItem :key="news.id" v-bind:item="news" v-bind:isSlider="true" />
     </template>
   </VueSlickCarousel>
 </template>
@@ -26,6 +26,7 @@ export default {
         autoSlidesToShow: true,
         variableWidth: true,
         centerMode: true,
+        swipeToSlide: true,
         responsive: [
           {
             breakpoint: 500,

@@ -1,11 +1,13 @@
 <template>
   <div class="wrapper">
-    <Header />
+    <Header id="header" />
     <About />
     <BestProjects />
     <Slider />
     <Partners />
-    <Blog />
+    <Blog id="contact" />
+    <AddComment v-bind:isHomeForm="true" />
+    <Footer />
   </div>
 </template>
 
@@ -16,10 +18,21 @@ import BestProjects from "../components/BestProjects";
 import Slider from "../components/Slider";
 import Partners from "../components/PartnersSlider";
 import Blog from "../components/BlogSection";
+import AddComment from "../components/AddComment";
+import Footer from "../components/Footer";
 
 export default {
   name: "Home",
-  components: { Header, About, BestProjects, Slider, Partners, Blog },
+  components: {
+    Header,
+    About,
+    BestProjects,
+    Slider,
+    Partners,
+    Blog,
+    AddComment,
+    Footer,
+  },
   props: {
     route: String,
   },

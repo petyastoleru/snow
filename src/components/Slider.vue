@@ -31,6 +31,7 @@ export default {
         arrows: false,
         dots: true,
         autoplay: true,
+        swipeToSlide: true,
       },
     };
   },

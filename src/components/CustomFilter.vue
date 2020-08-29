@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="btn" @click="onItemClick" v-bind:class="{active: isOpen}">
+    <div class="fileterBtn" @click="onItemClick" v-bind:class="{active: isOpen}">
       <span></span>
     </div>
     <ul class="filter" v-bind:class="{openFilter : isOpen}">
@@ -43,7 +43,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .filter {
   display: none;
   flex-wrap: wrap;
@@ -70,7 +70,7 @@ export default {
   }
 }
 
-.btn {
+.fileterBtn {
   width: 16px;
   height: 16px;
   margin: 0 auto;

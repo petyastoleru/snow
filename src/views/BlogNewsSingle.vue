@@ -13,7 +13,9 @@
       <div class="singleBlog__desc" v-html="objItem.htmlDesc"></div>
     </div>
     <Comments v-bind:comments="comments" v-if="showCommentBlog" />
-    <AddComment v-bind:blogID="objItem.id" />
+    <AddComment v-bind:blogID="objItem.id" v-bind:isHomeForm="false" />
+    <Choose v-bind:currentProduct="objItem" v-bind:isBlog="true" />
+
     <Footer />
   </div>
 </template>
@@ -22,11 +24,14 @@
 import Footer from "../components/Footer";
 import Comments from "../components/Comments";
 import AddComment from "../components/AddComment";
+import Choose from "../components/ChooseSingleWork";
+
 export default {
   components: {
     Footer,
     Comments,
     AddComment,
+    Choose,
   },
   data() {
     return {

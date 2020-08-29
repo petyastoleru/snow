@@ -1,7 +1,7 @@
 <template>
   <div class="page__wrapper">
     <template v-if="childDataLoaded">
-      <SingleWork v-bind:item="objItem" />
+      <SingleWork v-bind:item="objItem" v-bind:isBlog="false" />
 
       <Choose v-bind:currentProduct="objItem" />
       <Footer />

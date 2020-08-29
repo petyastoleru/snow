@@ -1,6 +1,6 @@
 <template>
   <div class="postMessage">
-    <h2 class="section__title postMessage__title">Leave a Comment:</h2>
+    <h2 class="section__title postMessage__title" v-if="!isHomeForm">Leave a Comment:</h2>
     <form
       method="get"
       class="section section--grey postMessage__form"
@@ -21,6 +21,14 @@
         v-model="email"
         pattern="^[a-z0-9._-]+@[a-z]+\.[a-z]{2,}$"
       />
+      <input
+        class="postMessage__titleForm"
+        type="text"
+        name="title"
+        placeholder="Your title..."
+        v-model="title"
+        pattern="^[A-Za-z- ]+$"
+      />
       <textarea name="comment" placeholder="Your comment" v-model="commentText"></textarea>
       <button class="postMessage__btn btn" type="submit">Post a comment</button>
     </form>
@@ -33,10 +41,11 @@ export default {
     return {
       name: "",
       email: "",
+      title: "",
       commentText: "",
     };
   },
-  props: ["blogID"],
+  props: ["blogID", "isHomeForm"],
 
   methods: {
     onSubmit() {
@@ -134,6 +143,11 @@ export default {
         border-bottom: 2px solid $color__subtitle;
       }
     }
+  }
+
+  &__titleForm {
+    width: 100% !important;
+    margin-top: 20px !important;
   }
 
   &__btn {

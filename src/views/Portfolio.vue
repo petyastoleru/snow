@@ -1,12 +1,10 @@
 <template>
-  <div class="portfolio section section--grey">
+  <div class="portfolio section section--grey" id="portfolio">
     <CustomFilter v-bind:gottenList="filterList" class="portfolio__filter" @filterItems="onFilter" />
 
     <BestProjectsList v-bind:projectArr="array" :key="filterString" />
 
-    <div class="section portfolio__load">
-      <a href="#">Load More Works</a>
-    </div>
+    <LoadMore v-bind:load="loadString" />
 
     <Footer />
   </div>
@@ -15,6 +13,7 @@
 <script>
 import BestProjectsList from "../components/BestProjectsList";
 import CustomFilter from "../components/CustomFilter";
+import LoadMore from "../components/LoadMore";
 import Footer from "../components/Footer";
 export default {
   data() {
@@ -29,12 +28,14 @@ export default {
       ],
       array: this.$store.getters.getProjects,
       filterString: "",
+      loadString: "works",
     };
   },
   components: {
     BestProjectsList,
     CustomFilter,
     Footer,
+    LoadMore,
   },
   props: {
     route: String,

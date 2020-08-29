@@ -1,12 +1,22 @@
 <template>
-  <nav class="nav" v-bind:class="{ close: scrolled && !isOpen || homePage && !isOpen}">
-    <router-link to="/" class="logo">
+  <scrollactive
+    class="nav"
+    v-bind:class="{ close: scrolled && !isOpen || homePage && !isOpen}"
+    :exact="true"
+  >
+    <router-link to="/#header" class="logo">
       <img src="@/assets/images/logo-light.svg" alt="logo" />
     </router-link>
 
     <ul class="nav__list" v-bind:class="{ show: isOpen }">
       <li class="nav__item" @click="onMenuClick" v-for="(link, index) in links" :key="index">
-        <router-link v-bind:to="link.linkTo">{{ link.desc }}</router-link>
+        <template v-if="link.id < 3">
+          <router-link class="scrollactive-item" v-bind:to="link.linkTo">{{ link.desc }}</router-link>
+        </template>
+
+        <template v-else>
+          <router-link v-bind:to="link.linkTo">{{ link.desc }}</router-link>
+        </template>
       </li>
     </ul>
 
@@ -18,7 +28,7 @@
     />
 
     <SocialLinks class="nav__socialLinks" v-bind:class="{ show: isOpen }" />
-  </nav>
+  </scrollactive>
 </template>
 
 <script>
@@ -35,10 +45,10 @@ export default {
       isOpen: false,
       scrolled: false,
       links: [
-        { linkTo: "/#about", desc: "About" },
-        { linkTo: "/#contact", desc: "Contact" },
-        { linkTo: "/portfolio", desc: "Portfolio" },
-        { linkTo: "/blog", desc: "Blog" },
+        { id: 1, linkTo: "/#about", desc: "About" },
+        { id: 2, linkTo: "/#contact", desc: "Contact" },
+        { id: 3, linkTo: "/portfolio", desc: "Portfolio" },
+        { id: 4, linkTo: "/blog", desc: "Blog" },
       ],
     };
   },
@@ -137,18 +147,6 @@ export default {
 
     & > * {
       color: $color__menu;
-
-      &.router-link-exact-active {
-        color: $color__main--white;
-
-        @include laptop {
-          color: $color__btnBg;
-        }
-
-        @include desktop {
-          color: $color__btnBg;
-        }
-      }
     }
 
     &:hover {
@@ -213,6 +211,18 @@ export default {
 .scrolled_burger {
   & > span {
     background-color: $color__btnBg !important;
+  }
+}
+
+.is-active {
+  color: $color__main--white;
+
+  @include laptop {
+    color: $color__btnBg;
+  }
+
+  @include desktop {
+    color: $color__btnBg;
   }
 }
 </style>

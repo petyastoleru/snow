@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .blog {
-  height: 860px;
+  height: auto;
   overflow: hidden;
 
   @include tablet {

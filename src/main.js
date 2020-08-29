@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+
+// font awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faClock, faStar, faHeart } from '@fortawesome/free-regular-svg-icons'
@@ -9,8 +11,15 @@ import { faAngleDown, faBriefcase, faAngleRight, faAngleLeft } from '@fortawesom
 import { faFacebookF, faTwitter, faInstagram, faDribbble } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faFacebookF, faTwitter, faDribbble, faInstagram, faAngleDown, faBriefcase, faClock, faStar, faHeart, faAngleRight, faAngleLeft)
-
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+// plugins
+import VueScrollactive from 'vue-scrollactive';
+import Vuelidate from 'vuelidate'
+
+Vue.use(VueScrollactive, Vuelidate);
+
+
 
 Vue.config.productionTip = false
 

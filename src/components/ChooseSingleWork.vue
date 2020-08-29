@@ -1,26 +1,53 @@
 <template>
   <div class="section choose">
     <template v-if="childDataLoaded">
-      <router-link
-        :to="{ name: 'Portfolio-Item', params: { id: prevProject.id }}"
-        @click.native="onClick"
-      >
-        <font-awesome-icon
-          :icon="{ prefix: 'fas', iconName: 'angle-left' }"
-          class="choose__icon choose__icon--left"
-        />
-        <p class="choose__text">Previous Project</p>
-      </router-link>
-      <router-link
-        :to="{ name: 'Portfolio-Item', params: { id: nextProject.id }}"
-        @click.native="onClick"
-      >
-        <p class="choose__text">Next Project</p>
-        <font-awesome-icon
-          :icon="{prefix: 'fas', iconName: 'angle-right' }"
-          class="choose__icon choose__icon--right"
-        />
-      </router-link>
+      <template v-if="!isBlog">
+        <router-link
+          :to="{ name: 'Portfolio-Item', params: { id: prevProject.id } }"
+          @click.native="onClick"
+        >
+          <font-awesome-icon
+            :icon="{ prefix: 'fas', iconName: 'angle-left' }"
+            class="choose__icon choose__icon--left"
+          />
+          <p class="choose__text">Previous Project</p>
+        </router-link>
+
+        <router-link
+          :to="{ name: 'Portfolio-Item', params: { id: nextProject.id } }"
+          @click.native="onClick"
+        >
+          <p class="choose__text">Next Project</p>
+          <font-awesome-icon
+            :icon="{ prefix: 'fas', iconName: 'angle-right' }"
+            class="choose__icon choose__icon--right"
+          />
+        </router-link>
+      </template>
+
+      <template v-else>
+        <router-link
+          :to="{ name: 'Blog-Item', params: { id: prevProject.id } }"
+          @click.native="onClick"
+        >
+          <font-awesome-icon
+            :icon="{ prefix: 'fas', iconName: 'angle-left' }"
+            class="choose__icon choose__icon--left"
+          />
+          <p class="choose__text">Previous post</p>
+        </router-link>
+
+        <router-link
+          :to="{ name: 'Blog-Item', params: { id: nextProject.id } }"
+          @click.native="onClick"
+        >
+          <p class="choose__text">Next post</p>
+          <font-awesome-icon
+            :icon="{ prefix: 'fas', iconName: 'angle-right' }"
+            class="choose__icon choose__icon--right"
+          />
+        </router-link>
+      </template>
     </template>
   </div>
 </template>
@@ -34,7 +61,7 @@ export default {
       childDataLoaded: false,
     };
   },
-  props: ["currentProduct"],
+  props: ["currentProduct", "isBlog"],
   methods: {
     onClick() {
       location.reload();
@@ -42,12 +69,18 @@ export default {
   },
   mounted() {
     let ID = +this.$route.path.slice(
-      this.$route.path.search("id") + 2,
+      this.$route.path.search("/id") + 3,
       this.$route.path.length
     );
 
-    this.nextProject = this.$store.getters.getNextOrPrevProject(++ID);
-    this.prevProject = this.$store.getters.getNextOrPrevProject(--ID);
+    this.nextProject = this.$store.getters.getNextOrPrevProject(
+      ID + 1,
+      this.isBlog
+    );
+    this.prevProject = this.$store.getters.getNextOrPrevProject(
+      ID - 1,
+      this.isBlog
+    );
 
     this.childDataLoaded = true;
   },
