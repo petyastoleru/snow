@@ -249,9 +249,12 @@ export default new Vuex.Store({
     ]
   },
   getters: {
+    // get all best projects from storage
     getProjects: state => {
       return state.bestProjects;
     },
+
+    // get item by id, for next and prev item
     getNextOrPrevProject: state => (currentId, isBlog) => {
       switch (true) {
         case currentId > (isBlog ? state.blogPosts.length : state.bestProjects.length): {
@@ -263,39 +266,50 @@ export default new Vuex.Store({
       }
       return isBlog ? state.blogPosts.find(todo => todo.id === currentId) : state.bestProjects.find(todo => todo.id === currentId);
     },
+
+    // get filtered items in portfolio by type
     getFiltered: state => filterBy => {
       return filterBy === 'all' ? state.bestProjects : state.bestProjects.filter(item => item.type === filterBy)
     },
+
+    // get filtered items in blog by type
     getFilteredPosts: state => filterBy => {
       return filterBy === 'all' ? state.blogPosts : state.blogPosts.filter(item => item.type === filterBy)
     },
+
+    // get list of partners
     getPartners: state => {
       return state.partnersLogo;
     },
+
+    // get list of blog posts
     getBlogPosts: state => {
       return state.blogPosts;
     },
+
+    // get best project by id
     getElementByID: state => id => {
       return state.bestProjects.filter(item => item.id === id);
     },
+
+    // get blog post by id
     getNewsByID: state => id => {
       return state.blogPosts.filter(item => item.id === id);
     },
+
+    // get comments by blog id
     getCommentByBlogID: state => blogID => {
       return state.comments.filter(item => item.blogID === blogID)
     },
+
+    // get all comments
     getComments: state => {
       return state.comments;
     }
 
   },
   mutations: {
-    /* setItem(state, item) {
-      Object.assign(state.choosenItem, item)
-    },
-    setBlog(state, item) {
-      Object.assign(state.choosenBlog, item)
-    }, */
+    // mutation to add new comment in storage
     addNewComment(state, obj) {
       state.comments.push({ commentID: state.comments.length + 1, blogID: obj.blogID, name: obj.name, date: obj.date, avatar: require('@/assets/images/post-6-mid.jpg'), commentText: obj.commentText });
     }
@@ -306,5 +320,7 @@ export default new Vuex.Store({
   modules: {
 
   },
+
+  // plugin to synchronize local storage with vuex
   plugins: [createPersistedState()],
 })

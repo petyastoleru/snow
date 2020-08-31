@@ -9,11 +9,11 @@
       @submit.prevent="onSubmit"
     >
       <div class="error-name">
-        <div class="error" v-if="!$v.name.customAlpha">Name must include only letters.</div>
-        <div
+        <span class="error" v-if="!$v.name.customAlpha">Name must include only letters.</span>
+        <span
           class="error"
           v-if="!$v.name.minLength"
-        >Name must have at least {{$v.name.$params.minLength.min}} letters.</div>
+        >Name must have at least {{$v.name.$params.minLength.min}} letters.</span>
       </div>
 
       <input
@@ -24,7 +24,7 @@
         v-model.trim="$v.name.$model"
       />
 
-      <div class="error error-email" v-if="!$v.email.email">Enter valid email</div>
+      <span class="error error-email" v-if="!$v.email.email">Enter valid email</span>
 
       <input
         :class="{invalid : $v.email.$error && $v.email.$dirty && !submitted }"
@@ -43,12 +43,12 @@
         v-model.trim="$v.title.$model"
       />
 
-      <div
+      <span
         class="error"
         v-if="!$v.title.minLength && $v.title.$dirty "
-      >Title must have at least {{$v.title.$params.minLength.min}} letters.</div>
+      >Title must have at least {{$v.title.$params.minLength.min}} letters.</span>
 
-      <div class="error" v-if="!$v.title.customAlpha">Title must include only letters.</div>
+      <span class="error" v-if="!$v.title.customAlpha">Title must include only letters.</span>
 
       <textarea
         name="comment"
@@ -56,12 +56,12 @@
         v-model.trim="$v.commentText.$model"
         :class="{invalid : $v.title.$invalid && $v.title.$dirty && !submitted }"
       ></textarea>
-      <div
+      <span
         class="error"
         v-if="!$v.commentText.minLength && $v.commentText.$dirty"
-      >Comment must have at least {{$v.commentText.$params.minLength.min}} letters.</div>
+      >Comment must have at least {{$v.commentText.$params.minLength.min}} letters.</span>
 
-      <div class="error" v-if="!$v.commentText.alpha">Invalid symbols in comment.</div>
+      <span class="error" v-if="!$v.commentText.alpha">Invalid symbols in comment.</span>
       <button class="postMessage__btn btn" type="submit">Post a comment</button>
     </form>
   </div>
@@ -290,16 +290,63 @@ comment: ${this.commentText}`
   margin: 5px 0 5px 0;
   font-family: $font-roboto;
   font-size: 14px;
+  padding-right: 15px;
 }
 
 .error-name {
+  text-align: left;
   position: absolute;
-  top: -45px;
+  top: -20px;
+  & > span {
+    display: block;
+  }
+
+  @include tablet {
+    top: 53px;
+
+    & > span {
+      display: inline;
+    }
+  }
+
+  @include laptop {
+    top: 53px;
+
+    & > span {
+      display: inline;
+    }
+  }
+
+  @include desktop {
+    top: 53px;
+
+    & > span {
+      display: inline;
+    }
+  }
 }
 
 .error-email {
   position: absolute;
-  top: -25px;
-  right: 0;
+  top: 70px;
+  left: 0;
+
+  @include tablet {
+    top: -25px;
+    left: auto;
+    right: 0;
+  }
+
+  @include laptop {
+    top: -25px;
+    left: auto;
+    right: 0;
+  }
+
+  @include desktop {
+    top: -25px;
+    left: auto;
+    right: 0;
+  }
 }
 </style>
