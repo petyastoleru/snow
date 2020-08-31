@@ -95,7 +95,7 @@ export default {
     position: absolute;
     width: 100%;
     height: 100vh;
-    background: url("../assets/images/post-3-mid.jpg") 100% 100%;
+    background: url("~@/assets/images/post-3-mid.jpg") 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;
     top: 0;

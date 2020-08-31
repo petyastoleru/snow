@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import BestProjectsList from "../components/BestProjectsList";
-import CustomFilter from "../components/CustomFilter";
-import LoadMore from "../components/LoadMore";
-import Footer from "../components/Footer";
+import BestProjectsList from "../components/BestProjects/BestProjectsList";
+import CustomFilter from "../components/Filter/CustomFilter";
+import LoadMore from "../components/Navigation/LoadMore";
+import Footer from "../components/Footer/Footer";
 export default {
   data() {
     return {

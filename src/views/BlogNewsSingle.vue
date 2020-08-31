@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import Footer from "../components/Footer";
-import Comments from "../components/Comments";
-import AddComment from "../components/AddComment";
-import Choose from "../components/ChooseSingleWork";
+import Footer from "../components/Footer/Footer";
+import Comments from "../components/Comments/Comments";
+import AddComment from "../components/Comments/AddComment";
+import Choose from "../components/Navigation/ChooseSingleWork";
 
 export default {
   components: {

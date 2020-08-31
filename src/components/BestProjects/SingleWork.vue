@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import Choose from "../components/ChooseSingleWork";
-import SocLinks from "../components/SocialLinks";
+import Choose from "../Navigation/ChooseSingleWork";
+import SocLinks from "../Navigation/SocialLinks";
 
 export default {
   data() {

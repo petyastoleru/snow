@@ -8,7 +8,7 @@
         and lean processes enable us to work faster and smarter.
       </p>
       <div class="about__signature">
-        <img src="../assets/images/about-me-signature.png" alt="signature" />
+        <img src="@/assets/images/about-me-signature.png" alt="signature" />
       </div>
     </div>
 

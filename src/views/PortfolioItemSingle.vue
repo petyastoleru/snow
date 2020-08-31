@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import SingleWork from "../components/SingleWork";
-import Choose from "../components/ChooseSingleWork";
-import Footer from "../components/Footer";
+import SingleWork from "../components/BestProjects/SingleWork";
+import Choose from "../components/Navigation/ChooseSingleWork";
+import Footer from "../components/Footer/Footer";
 
 export default {
   components: {

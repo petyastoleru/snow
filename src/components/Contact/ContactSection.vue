@@ -8,8 +8,9 @@
 </template>
 
 <script>
-import ContactInfo from "../components/ContactInfo";
-import AddComment from "../components/AddComment";
+import ContactInfo from "./ContactInfo";
+import AddComment from "../Comments/AddComment";
+
 export default {
   components: { ContactInfo, AddComment },
 };

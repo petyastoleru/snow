@@ -13,10 +13,11 @@
 </template>
 
 <script>
-import CustomFilter from "../components/CustomFilter";
-import BlogItem from "../components/BlogItem";
-import LoadMore from "../components/LoadMore";
-import Footer from "../components/Footer";
+import CustomFilter from "../components/Filter/CustomFilter";
+import BlogItem from "../components/Blog/BlogItem";
+import LoadMore from "../components/Navigation/LoadMore";
+import Footer from "../components/Footer/Footer";
+
 export default {
   components: { BlogItem, CustomFilter, LoadMore, Footer },
   data() {

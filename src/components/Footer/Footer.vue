@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import SocLinks from "../components/SocialLinks";
+import SocLinks from "../Navigation/SocialLinks";
 export default {
   components: {
     SocLinks,

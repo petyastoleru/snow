@@ -34,7 +34,7 @@ export default {
   }
 
   &__bg {
-    background: rgba($color: $color__footer--bg, $alpha: 0.8);
+    background: rgba($color: $color__title, $alpha: 0.8);
     position: absolute;
     top: 0;
     left: 0;

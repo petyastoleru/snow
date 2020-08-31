@@ -17,7 +17,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 import VueScrollactive from 'vue-scrollactive';
 import Vuelidate from 'vuelidate'
 
-Vue.use(VueScrollactive, Vuelidate);
+Vue.use(VueScrollactive);
+Vue.use(Vuelidate);
 
 
 

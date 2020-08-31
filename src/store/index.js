@@ -297,7 +297,7 @@ export default new Vuex.Store({
       Object.assign(state.choosenBlog, item)
     }, */
     addNewComment(state, obj) {
-      state.comments.push({ commentID: state.comments.length + 1, blogID: obj.blogID, name: obj.name, date: "20 September, 2016", avatar: require('@/assets/images/post-6-mid.jpg'), commentText: obj.commentText });
+      state.comments.push({ commentID: state.comments.length + 1, blogID: obj.blogID, name: obj.name, date: obj.date, avatar: require('@/assets/images/post-6-mid.jpg'), commentText: obj.commentText });
     }
 
   },

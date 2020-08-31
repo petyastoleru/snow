@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Comment from "../components/SingleComment";
+import Comment from "./SingleComment";
 export default {
   components: {
     Comment,

@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import Header from "../components/Header";
-import About from "../components/About";
-import BestProjects from "../components/BestProjects";
-import Slider from "../components/Slider";
-import Partners from "../components/PartnersSlider";
-import Blog from "../components/BlogSection";
-import Contact from "../components/ContactSection";
-import Footer from "../components/Footer";
+import Header from "../components/Header/Header";
+import About from "../components/About/About";
+import BestProjects from "../components/BestProjects/BestProjects";
+import Slider from "../components/QuoteSlider/Slider";
+import Partners from "../components/Partners/PartnersSlider";
+import Blog from "../components/Blog/BlogSection";
+import Contact from "../components/Contact/ContactSection";
+import Footer from "../components/Footer/Footer";
 
 export default {
   name: "Home",

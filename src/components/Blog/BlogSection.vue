@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import BlogSlider from "../components/BlogSlider";
+import BlogSlider from "./BlogSlider";
 export default {
   components: { BlogSlider },
 };
