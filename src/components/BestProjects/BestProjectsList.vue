@@ -1,9 +1,9 @@
 <template>
-  <ul class="portfolioList">
-    <li class="portfolioList__item" v-for="(project, index) in projectArray" :key="index">
+  <transition-group name="list" tag="ul" appear class="portfolioList">
+    <li class="portfolioList__item" v-for="project in projectArray" :key="project.id">
       <PortfolioItem v-bind:projectDesc="project" />
     </li>
-  </ul>
+  </transition-group>
 </template>
 
 <script>
@@ -23,7 +23,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped >
+.list-enter-active,
+.list-leave-active {
+  transition: opacity 1s;
+}
+.list-enter, .list-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
+
 .portfolioList {
   width: min-content;
   padding-top: 57px;
@@ -42,6 +50,7 @@ export default {
   }
 
   &__item {
+    display: block;
     width: 90vw;
     height: 345px;
 

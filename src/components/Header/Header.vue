@@ -7,11 +7,13 @@
         <span class="header__subtitle--italic">you publish on web</span>
       </p>
     </div>
-    <a href="#about">
-      <div class="header__scroll">
-        <font-awesome-icon :icon="{ prefix: 'fas', iconName: 'angle-down' }" />
-      </div>
-    </a>
+    <scrollactive :exact="true" :offset="110" :duration="900" bezier-easing-value=".5,0,.35,1">
+      <router-link to="/#about" class="scrollactive-item">
+        <div class="header__scroll">
+          <font-awesome-icon :icon="{ prefix: 'fas', iconName: 'angle-down' }" />
+        </div>
+      </router-link>
+    </scrollactive>
   </section>
 </template>
 
@@ -103,6 +105,27 @@ export default {
     bottom: 40px;
     @include flexCenter;
     color: $color__main--white;
+
+    & > * {
+      @include aboluteCenterLeft;
+      animation: scrollDown 1s ease-out infinite;
+    }
+
+    &:hover {
+      & > * {
+        animation-play-state: paused;
+      }
+    }
+  }
+}
+
+@keyframes scrollDown {
+  from {
+    top: 7px;
+  }
+  to {
+    top: 32px;
+    opacity: 0.3;
   }
 }
 </style>

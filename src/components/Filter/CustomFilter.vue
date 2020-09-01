@@ -45,11 +45,14 @@ export default {
 
 <style lang="scss" scoped>
 .filter {
-  display: none;
+  display: flex;
+  transition: visibility 1s, opacity 1s linear;
   flex-wrap: wrap;
   justify-content: center;
   text-transform: uppercase;
   margin-top: 25px;
+  visibility: hidden;
+  opacity: 0;
 
   &__item {
     margin: 0 20px 0 20px;
@@ -147,7 +150,8 @@ export default {
 }
 
 .openFilter {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
 }
 
 .opened {
@@ -156,10 +160,12 @@ export default {
 
 @keyframes dropDown {
   0% {
+    visibility: hidden;
     opacity: 0;
     bottom: 25px;
   }
   100% {
+    visibility: visible;
     opacity: 1;
     bottom: 0;
   }

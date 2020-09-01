@@ -318,7 +318,6 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-
   },
 
   // plugin to synchronize local storage with vuex
