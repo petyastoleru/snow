@@ -68,10 +68,7 @@ export default {
     },
   },
   mounted() {
-    let ID = +this.$route.path.slice(
-      this.$route.path.search("/id") + 3,
-      this.$route.path.length
-    );
+    let ID = +this.$route.params.id;
 
     this.nextProject = this.$store.getters.getNextOrPrevProject(
       ID + 1,

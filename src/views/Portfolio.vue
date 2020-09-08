@@ -2,9 +2,9 @@
   <div class="portfolio section section--grey" id="portfolio">
     <CustomFilter v-bind:gottenList="filterList" class="portfolio__filter" @filterItems="onFilter" />
 
-    <BestProjectsList v-bind:projectArr="array" :key="filterString" />
+    <BestProjectsList v-bind:projectArr="array" :key="filterString" v-bind:quantity="quantity" />
 
-    <LoadMore v-bind:load="loadString" />
+    <LoadMore v-bind:load="loadString" @loadMore="onLoadMore" />
 
     <Footer />
   </div>
@@ -29,6 +29,7 @@ export default {
       array: this.$store.getters.getProjects,
       filterString: "",
       loadString: "works",
+      quantity: 9,
     };
   },
   components: {
@@ -47,6 +48,9 @@ export default {
     onFilter(filterBy) {
       this.array = this.$store.getters.getFiltered(filterBy);
       this.filterString = filterBy;
+    },
+    onLoadMore() {
+      this.quantity += 3;
     },
   },
 };

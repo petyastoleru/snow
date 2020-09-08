@@ -3,11 +3,13 @@
     <CustomFilter v-bind:gottenList="filterList" class="blog__filter" @filterItems="onFilter" />
 
     <ul class="blog__list" :key="filterString">
-      <li class="blog__item" v-for="item in array" :key="item.id">
-        <BlogItem v-bind:item="item" v-bind:isSlider="false" />
-      </li>
+      <template v-for="(item, index) in array">
+        <li class="blog__item" :key="item.id" v-if="index<quantity">
+          <BlogItem v-bind:item="item" />
+        </li>
+      </template>
     </ul>
-    <LoadMore v-bind:load="loadString" />
+    <LoadMore v-bind:load="loadString" @loadMore="onLoadMore" />
     <Footer />
   </div>
 </template>
@@ -26,6 +28,7 @@ export default {
       array: this.$store.getters.getBlogPosts,
       filterString: "",
       loadString: "posts",
+      quantity: 5,
     };
   },
   props: {
@@ -35,6 +38,9 @@ export default {
     onFilter(filterBy) {
       this.array = this.$store.getters.getFilteredPosts(filterBy);
       this.filterString = filterBy;
+    },
+    onLoadMore() {
+      this.quantity += 3;
     },
   },
   created() {

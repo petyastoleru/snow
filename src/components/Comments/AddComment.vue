@@ -291,6 +291,9 @@ comment: ${this.commentText}`
   font-family: $font-roboto;
   font-size: 14px;
   padding-right: 15px;
+  height: fit-content;
+  width: 100%;
+  text-align: left;
 }
 
 .error-name {
@@ -330,6 +333,7 @@ comment: ${this.commentText}`
   position: absolute;
   top: 70px;
   left: 0;
+  text-align: right;
 
   @include tablet {
     top: -25px;

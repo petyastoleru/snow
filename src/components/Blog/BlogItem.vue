@@ -11,8 +11,8 @@
         <h3 class="card__title">{{item.title}}</h3>
       </router-link>
       <p class="card__date">{{item.date}}</p>
-      <p v-if="isSlider" class="card__shortDesc">{{item.shortDesc}}</p>
-      <p class="card__desc" v-else v-html="item.blogDesc"></p>
+      <p class="card__shortDesc" v-if="isSlider">{{item.shortDesc}}</p>
+      <p class="card__blogDesc" v-else v-html="item.blogDesc"></p>
     </div>
   </div>
 </template>
@@ -55,7 +55,7 @@ export default {
 
   &__image {
     width: 100%;
-    height: 240px;
+    height: 55%;
     position: relative;
 
     & > a {
@@ -111,12 +111,12 @@ export default {
   }
 
   &__shortDesc {
-    margin-top: 22px;
+    margin-top: 14px;
     font-size: 15px;
     color: $color__subtitle;
   }
 
-  &__desc {
+  &__blogDesc {
     cursor: text;
     margin-top: 15px;
   }

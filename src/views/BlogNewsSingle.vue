@@ -49,12 +49,7 @@ export default {
     this.$emit("getRoute", this.route);
   },
   mounted() {
-    this.objItem = this.$store.getters.getNewsByID(
-      +this.$route.path.slice(
-        this.$route.path.search("id") + 2,
-        this.$route.path.length
-      )
-    )[0];
+    this.objItem = this.$store.getters.getNewsByID(+this.$route.params.id)[0];
     this.childDataLoaded = this.objItem ? true : false;
 
     this.comments = this.$store.getters.getCommentByBlogID(this.objItem.id);

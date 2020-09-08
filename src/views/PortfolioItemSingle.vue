@@ -34,10 +34,7 @@ export default {
   },
   mounted() {
     this.objItem = this.$store.getters.getElementByID(
-      +this.$route.path.slice(
-        this.$route.path.search("id") + 2,
-        this.$route.path.length
-      )
+      +this.$route.params.id
     )[0];
     this.childDataLoaded = this.objItem ? true : false;
   },

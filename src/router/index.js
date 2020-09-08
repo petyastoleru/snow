@@ -25,6 +25,7 @@ const routes = [
     component: Home
   },
 
+  { path: '*', component: Home },
   {
     path: '/portfolio',
     name: 'Portfolio',
@@ -34,7 +35,7 @@ const routes = [
   },
 
   {
-    path: '/portfolioItem/id:id',
+    path: '/portfolioItem/:id',
     name: 'Portfolio-Item',
     meta: {
       reload: true,
@@ -53,7 +54,7 @@ const routes = [
   },
 
   {
-    path: '/blog/id:id',
+    path: '/blog/:id',
     name: 'Blog-Item',
     meta: {
       reload: true,
@@ -62,6 +63,11 @@ const routes = [
     props: true,
     component: () => import(/* webpackChunkName: "about" */ '../views/BlogNewsSingle.vue')
   },
+
+  {
+    path: '*',
+    redirect: '/'
+  }
 
 ]
 

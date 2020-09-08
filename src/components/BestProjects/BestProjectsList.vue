@@ -1,8 +1,10 @@
 <template>
   <transition-group name="list" tag="ul" appear class="portfolioList">
-    <li class="portfolioList__item" v-for="project in projectArray" :key="project.id">
-      <PortfolioItem v-bind:projectDesc="project" />
-    </li>
+    <template v-for="(project, index) in projectArray">
+      <li class="portfolioList__item" :key="project.id" v-if="index<quantity">
+        <PortfolioItem v-bind:projectDesc="project" />
+      </li>
+    </template>
   </transition-group>
 </template>
 
@@ -19,7 +21,7 @@ export default {
       filterName: "all",
     };
   },
-  props: ["projectArr"],
+  props: ["projectArr", "quantity"],
 };
 </script>
 

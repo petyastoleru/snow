@@ -5,7 +5,7 @@
       Donec orci sem, pretium ac dolor et, faucibus faucibus mauris. Etiam,pellentesque faucibus.
       Vestibulum gravida volutpat ipsum non ultrices.
     </p>
-    <BestProjectsList v-bind:projectArr="this.$store.getters.getProjects" />
+    <BestProjectsList v-bind:projectArr="this.$store.getters.getProjects" v-bind:quantity="9" />
   </section>
 </template>
 

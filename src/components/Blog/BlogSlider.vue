@@ -1,7 +1,7 @@
 <template>
   <VueSlickCarousel class="slider" v-bind="settings">
     <template v-for="news in newsList">
-      <BlogItem :key="news.id" v-bind:item="news" v-bind:isSlider="true" />
+      <BlogItem v-if="news.id < 6" :key="news.id" v-bind:item="news" v-bind:isSlider="true" />
     </template>
   </VueSlickCarousel>
 </template>

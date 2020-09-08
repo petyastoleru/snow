@@ -1,12 +1,17 @@
 <template>
   <div class="section loadMore">
-    <a href="#">Load More {{load}}</a>
+    <span @click="onClick">Load More {{load}}</span>
   </div>
 </template>
 
 <script>
 export default {
   props: ["load"],
+  methods: {
+    onClick() {
+      this.$emit("loadMore");
+    },
+  },
 };
 </script>
 
@@ -20,8 +25,9 @@ export default {
   font-weight: 500;
   @include flexCenter;
 
-  & > a {
+  & > span {
     color: $color__title;
+    cursor: pointer;
 
     &:hover {
       opacity: 0.6;
