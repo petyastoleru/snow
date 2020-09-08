@@ -136,7 +136,7 @@ export default {
         "November",
         "December",
       ];
-      return `${monthNames[month - 1]} ${day - 1}, ${year}`;
+      return `${monthNames[month]} ${day + 6}, ${year}`;
     },
 
     onSubmit() {
